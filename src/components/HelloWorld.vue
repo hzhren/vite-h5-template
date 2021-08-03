@@ -3,13 +3,13 @@
  * @Date: 2021-08-02 19:48:26
  * @Description: 进入下一个阶段
  * @LastEditors: your name
- * @LastEditTime: 2021-08-02 20:13:02
+ * @LastEditTime: 2021-08-03 10:37:28
 -->
 <template>
   <h1>{{ msg }}</h1>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" class="text-3xl">
+    <a href="https://vitejs.dev/guide/features.html" target="_blank" class="text-base">
       Vite Documentation
     </a>
     |
