@@ -3,7 +3,7 @@
  * @Date: 2021-08-03 15:57:33
  * @Description: 进入下一个阶段
  * @LastEditors: your name
- * @LastEditTime: 2021-08-03 18:32:29
+ * @LastEditTime: 2021-08-04 14:55:45
 -->
 <template>
   <van-nav-bar
@@ -19,12 +19,12 @@
 <script>
 export default {
   setup() {
-    const onClickLeft = () => Toast('返回');
+    const onClickLeft = () => Toast('返回')
     return {
-      onClickLeft,
-    };
-  },
-};
+      onClickLeft
+    }
+  }
+}
 </script>
 
 <style>
