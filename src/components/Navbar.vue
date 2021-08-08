@@ -3,20 +3,23 @@
  * @Date: 2021-08-03 15:57:33
  * @Description: 进入下一个阶段
  * @LastEditors: your name
- * @LastEditTime: 2021-08-04 14:55:45
+ * @LastEditTime: 2021-08-08 00:50:55
 -->
 <template>
   <van-nav-bar
-    title="客户资料审批"
     left-arrow
     fixed
     placeholder
     safe-area-inset-top
     @click-left="onClickLeft"
-  />
+  >
+    <template #title><span class="font-semibold text-18px text-[#222222]">客户资料审批</span></template>
+    <template #left> <img src="../assets/icon/icon_back_black.svg" class="h-24px w-24px" alt="返回"></template>
+  </van-nav-bar>
 </template>
 
 <script>
+import { Toast } from 'vant'
 export default {
   setup() {
     const onClickLeft = () => Toast('返回')
@@ -27,5 +30,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
