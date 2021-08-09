@@ -3,11 +3,17 @@
  * @Date: 2021-08-03 15:41:42
  * @Description: 客户审批list
  * @LastEditors: your name
- * @LastEditTime: 2021-08-09 01:47:55
+ * @LastEditTime: 2021-08-09 16:26:54
 -->
 <template>
-  <div class="m-auto w-359px">
-    <van-search v-model="searchKey" placeholder="搜索" background="#F2F2F2">
+<navbar title="客户资料审批"></navbar>
+  <van-dropdown-menu active-color="#3366FE" class="fixed w-full z-10">
+    <van-dropdown-item v-model="query1" :options="option1" />
+    <van-dropdown-item v-model="query2" :options="option2" />
+    <van-dropdown-item v-model="query3" :options="option3" />
+  </van-dropdown-menu>
+  <div class="w-full h-40px"></div>
+   <van-search v-model="searchKey" placeholder="搜索" background="#F2F2F2" class="fixed w-359px ml-8px z-5">
       <template #left-icon>
         <img
           src="../assets//icon/search_icon.svg"
@@ -15,6 +21,8 @@
         />
       </template>
     </van-search>
+  <div class="m-auto w-359px">
+    <div class="w-full h-62px"></div>
     <van-pull-refresh v-model="list.refreshing" @refresh="onRefresh">
       <van-list
         v-model:loading="list.loading"
@@ -22,7 +30,7 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <div v-for="item in list.data" :key="item" class="list-cell">
+        <div v-for="item in list.data" :key="item" class="list-cell" @click="getDetail">
           <!-- <div class="cell-type bg-[#9CBEFF]">客户更名</div> -->
           <div class="cell-type bg-[#FF9CBA]">资料修改</div>
           <!-- <div class="cell-type bg-[#FFB69E]">类别调整</div> -->
@@ -68,9 +76,13 @@
 
 <script>
 import { reactive, ref } from 'vue'
-
+import { useRouter } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
 export default {
   name: 'dashboard',
+  components: {
+    Navbar
+  },
   setup() {
     const list = reactive({
       data: [],
@@ -79,6 +91,24 @@ export default {
       refreshing: false
     })
     const searchKey = ref(undefined)
+    const query1 = ref('a')
+    const query2 = ref('a')
+    const query3 = ref('a')
+    const option1 = [
+      { text: '默认排序', value: 'a' },
+      { text: '好评排序', value: 'b' },
+      { text: '销量排序', value: 'c' }
+    ]
+    const option2 = [
+      { text: '默认排序', value: 'a' },
+      { text: '好评排序', value: 'b' },
+      { text: '销量排序', value: 'c' }
+    ]
+    const option3 = [
+      { text: '默认排序', value: 'a' },
+      { text: '好评排序', value: 'b' },
+      { text: '销量排序', value: 'c' }
+    ]
     const onLoad = () => {
       setTimeout(() => {
         if (list.refreshing) {
@@ -106,12 +136,25 @@ export default {
       list.loading = true
       onLoad()
     }
-
+    /* 详情 */
+    const router = useRouter()
+    const getDetail = () => {
+      router.push({
+        path: '/customerAudit'
+      })
+    }
     return {
       list,
       searchKey,
+      query1,
+      query2,
+      query3,
+      option1,
+      option2,
+      option3,
       onLoad,
-      onRefresh
+      onRefresh,
+      getDetail
     }
   }
 }
