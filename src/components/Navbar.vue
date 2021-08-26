@@ -1,9 +1,9 @@
 <!--
  * @Author: hzhren
  * @Date: 2021-08-03 15:57:33
- * @Description: 进入下一个阶段
+ * @Description: 顶部导航栏
  * @LastEditors: your name
- * @LastEditTime: 2021-08-09 16:18:14
+ * @LastEditTime: 2021-08-27 01:09:55
 -->
 <template>
   <van-nav-bar
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { Toast } from 'vant'
+import { useRouter } from 'vue-router'
 export default {
   props: {
     title: {
@@ -27,10 +27,11 @@ export default {
       required: true
     }
   },
-  emits: [],
+  emits: ['back'],
   setup(props, { emit }) {
+    const router = useRouter()
     const onClickLeft = () => {
-      Toast('返回')
+      router.go(-1)
       emit('back')
     }
     return {
@@ -39,5 +40,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

@@ -1,9 +1,9 @@
 /*
  * @Author: hzhren
  * @Date: 2021-08-02 19:48:26
- * @Description: 进入下一个阶段
+ * @Description: mian.js
  * @LastEditors: your name
- * @LastEditTime: 2021-08-09 01:41:17
+ * @LastEditTime: 2021-08-27 01:58:07
  */
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -15,7 +15,9 @@ import {
   DropdownMenu,
   DropdownItem,
   Toast,
-  Search
+  Search,
+  Uploader,
+  Dialog
 } from 'vant'
 import { routes } from './router/index'
 import App from './App.vue'
@@ -35,4 +37,6 @@ createApp(App)
   .use(DropdownItem)
   .use(Toast)
   .use(Search)
+  .use(Uploader)
+  .use(Dialog)
   .mount('#app')
