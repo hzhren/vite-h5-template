@@ -3,11 +3,11 @@
  * @Date: 2021-08-03 15:41:42
  * @Description: 客户审批list
  * @LastEditors: your name
- * @LastEditTime: 2021-08-09 16:26:54
+ * @LastEditTime: 2021-08-26 11:06:48
 -->
 <template>
 <navbar title="客户资料审批"></navbar>
-  <van-dropdown-menu active-color="#3366FE" class="fixed w-full z-10">
+  <van-dropdown-menu active-color="#3366FE" class="fixed z-10 w-full">
     <van-dropdown-item v-model="query1" :options="option1" />
     <van-dropdown-item v-model="query2" :options="option2" />
     <van-dropdown-item v-model="query3" :options="option3" />
@@ -140,7 +140,10 @@ export default {
     const router = useRouter()
     const getDetail = () => {
       router.push({
-        path: '/customerAudit'
+        path: '/customerAudit',
+        query: {
+          pathType: 'base'
+        }
       })
     }
     return {
